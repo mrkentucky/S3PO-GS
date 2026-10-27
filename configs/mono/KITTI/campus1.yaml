@@ -1,0 +1,28 @@
+inherit_from: "configs/mono/KITTI/base_config.yaml"
+
+Dataset:
+  dataset_path: "datasets/KITTI/campus1/"
+  begin: 0
+  end: 329
+  Calibration:
+    fx: 800.2687
+    fy: 782.7548
+    cx: 270.0
+    cy: 480.0
+    k1: 0.0
+    k2: 0.0
+    p1: 0.0
+    p2: 0.0
+    k3: 0.0
+    width: 540
+    height: 960
+    depth_scale: 200.0
+    distorted: False
+
+opt_params:
+    position_lr_init: 0.0016
+    position_lr_final: 0.00016
+    init_lr: 6
+
+Training:
+    mapping_itr_nosingle: 10

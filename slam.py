@@ -15,7 +15,10 @@ from munch import munchify
 import wandb
 from gaussian_splatting.scene.gaussian_model import GaussianModel
 from gaussian_splatting.utils.system_utils import mkdir_p
-from gui import gui_utils, slam_gui
+try:
+    from gui import gui_utils, slam_gui
+except ImportError:
+    gui_utils = slam_gui = None
 from utils.config_utils import load_config
 from utils.dataset import load_dataset
 from utils.eval_utils import eval_ate, eval_rendering, save_gaussians
@@ -225,6 +228,8 @@ if __name__ == "__main__":
     parser.add_argument("--iter", type=int, default=None, help="iteration count of pose optimization")
     parser.add_argument("--windowsize", type=int, default=None, help="window size of local BA")
     parser.add_argument("--patch_size", type=int, default=None, help="patch size")
+    parser.add_argument("--ns", type=int, default=None, help="mapping_itr_nosingle")
+    parser.add_argument("--sh", type=int, default=None, help="sh_degree")
     
 
     args = parser.parse_args(sys.argv[1:])
